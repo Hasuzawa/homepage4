@@ -7,7 +7,7 @@
     "docker"
   ],
   "description": "server for React frontend",
-  "homepage": "",
+  "homepage": "https://github.com/Hasuzawa/homepage4",
   "main": "index.js",
   "type": "module",
   "scripts": {
