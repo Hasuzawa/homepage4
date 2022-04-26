@@ -11,11 +11,27 @@ services:
       dockerfile: Dockerfile
       context: ./frontend
     ports:
-      "3000:3000"
-  server:
-    depends_on: frontend
+      - "3000:3000"
+    networks:
+      - website
+  backend:
     build:
       dockerfile: Dockerfile
-      context: ./nginx
-    ports: "3050:80"
-    restart: always
+      context: ./backend
+    ports:
+      - "5000:5000"
+    restart: unless-stopped
+    networks:
+      - website
+  # reverse_proxy:
+  #   depends_on:
+  #     - frontend
+  #     - backend
+  #   build: Dockerfile
+  #   context: ./nginx
+  #   ports:
+  #   restart: always
+  #   network: website
+  
+networks:
+  website:
