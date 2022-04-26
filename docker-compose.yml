@@ -1,0 +1,21 @@
+version: "0.1"
+
+x-common-variables:
+  PORT: "443"
+
+
+
+services:
+  frontend:
+    build:
+      dockerfile: Dockerfile
+      context: ./frontend
+    ports:
+      "3000:3000"
+  server:
+    depends_on: frontend
+    build:
+      dockerfile: Dockerfile
+      context: ./nginx
+    ports: "3050:80"
+    restart: always
