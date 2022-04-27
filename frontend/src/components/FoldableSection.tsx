@@ -3,7 +3,9 @@ import { VscTriangleLeft } from "react-icons/vsc"
 import { motion, AnimatePresence, LayoutGroup, Transition, Variants} from "framer-motion"
 
 interface FoldableSectionProps {
-    title: string
+    title: string,
+    content: JSX.Element,
+    id: string
 }
 
 // for content within section
@@ -60,8 +62,8 @@ const FoldableSection = (props: FoldableSectionProps) => {
             initial={false}
             animate="visible"
             layout
-            id="introduction"
-            className="bg-green-300"
+            id={props.id}
+            className="bg-blue-300"
             // variants={foldAnimation}
         >
                 <motion.h1 
@@ -84,11 +86,7 @@ const FoldableSection = (props: FoldableSectionProps) => {
                     exit="hidden"
                     variants={appearAnimation}
                 >
-                    <h1>testing</h1>
-                    <h1>testing</h1>
-                    <h1>testing</h1>
-                    <h1>testing</h1>
-                    <h1>testing</h1>
+                    {props.content}
                 </motion.div>
             }
             </AnimatePresence>

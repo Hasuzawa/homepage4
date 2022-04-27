@@ -1,49 +1,73 @@
 import './App.css';
 import FoldableSection from './components/FoldableSection'
 import { useState, useEffect } from "react"
+import Navigation from './components/Navigation';
+import Footer from './components/Footer';
+
+
 
 const Home = () => {
 
 
     return (
-        <div className="w-full h-full bg">
+        <div className="w-full h-full bg" id="home">
             <div className="flex flex-row">
-                <div className="flex-0 w-60 bg-blue-300 h-screen">
-                    <h1>this is menu</h1>
-                    <li className="list-none">
-                        <li>Introduction</li>
-                        <li>Work Experience</li>
-                        <li>Skill</li>
-                        <li>Project</li>
-                        <li>Contact</li>
-                    </li>
+
+                <div className="flex flex-col flex-0 w-60 h-screen p-4 border-r-2" id="side-menu">
+                    <h1 className="flex-none text-2xl text-center p-2 border-b-2">
+                        Hasuzawa@Home
+                    </h1>
+                    <Navigation />
+                    <Footer />
                 </div>
-                <div className="flex-1 bg-red-300">
+
+
+
+
+                <main className="flex-1 bg-red-300">
                     {/* introduction */}
-                    <FoldableSection title="Introduction"/>
-
-                    <div
-                        id="work experience"
-                    >
-                        <h1>Work Experience</h1>
-                    </div>
-                    <div id="skill">
-                        <h1>Skill</h1>
-                    </div>
-                    <div id="project">
-                        <h1>Project</h1>
-                    </div>
-                    <div id="contact">
-                        <h1>Contact</h1>
-                    </div>
-                    {/* skill */}
-                    {/* experience */}
-
-                </div>
+                    <FoldableSection
+                        title="Introduction"
+                        content={<h1 className="text-3xl">Hi! I am developer working in Tokyo, Japan.</h1>}
+                        id="introduction"
+                    />
+                    <FoldableSection
+                        title="Work Experience"
+                        content={
+                            <ul>
+                                <li>
+                                    <h3>Fullstack Developer</h3>
+                                    <ul>
+                                        <li><span>Created React app with Java backend</span></li>
+                                        <li></li>
+                                        <li></li>
+                                        <li></li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    <h3>Database &amp; Linux Administrator</h3>
+                                </li>
+                            </ul>
+                        }
+                        id="work-experience"
+                    />
+                    <FoldableSection
+                        title="Skill"
+                        content={<></>}
+                        id="skill"
+                    />
+                    <FoldableSection
+                        title="Project"
+                        content={<></>}
+                        id="project"
+                    />
+                    <FoldableSection
+                        title="Contact"
+                        content={<></>}
+                        id="contact"
+                    />
+                </main>
             </div>
-            <footer className="w-full h-28 bg-gray-300">
-                <h1>This is footer</h1>
-            </footer>
         </div>
     )
 }
